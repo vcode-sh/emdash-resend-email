@@ -1,0 +1,62 @@
+{
+  "name": "emdash-resend-email",
+  "version": "0.1.0",
+  "description": "Resend email provider for EmDash CMS: magic links, invites, recovery and plugin email through the Resend API.",
+  "keywords": [
+    "emdash",
+    "emdash-plugin",
+    "resend",
+    "email",
+    "magic-link"
+  ],
+  "homepage": "https://github.com/vcode-sh/emdash-resend-email#readme",
+  "bugs": "https://github.com/vcode-sh/emdash-resend-email/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vcode-sh/emdash-resend-email.git"
+  },
+  "license": "MIT",
+  "author": "Vibe Code <hello@vcode.sh> (https://vcode.sh)",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
+    },
+    "./sandbox": "./dist/plugin.mjs"
+  },
+  "main": "dist/index.mjs",
+  "files": [
+    "dist/*.mjs",
+    "dist/*.d.mts",
+    "dist/manifest.json",
+    "emdash-plugin.jsonc"
+  ],
+  "scripts": {
+    "build": "emdash-plugin build",
+    "bundle": "emdash-plugin bundle",
+    "check": "ultracite check",
+    "dev": "emdash-plugin dev",
+    "fix": "ultracite fix",
+    "prepack": "emdash-plugin build",
+    "registry:login": "emdash-plugin login",
+    "registry:publish": "emdash-plugin publish",
+    "test": "emdash-plugin validate && vitest run",
+    "typecheck": "tsc --noEmit",
+    "validate": "emdash-plugin validate"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.15",
+    "@emdash-cms/blocks": "1.2.0",
+    "@emdash-cms/plugin-cli": "0.13.3",
+    "@emdash-cms/plugin-test": "0.2.8",
+    "emdash": "1.2.0",
+    "typescript": "7.0.2",
+    "ultracite": "8.0.0",
+    "vitest": "4.1.11"
+  },
+  "peerDependencies": {
+    "emdash": "^1.2.0"
+  },
+  "packageManager": "bun@1.4.3"
+}

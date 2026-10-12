@@ -1,0 +1,46 @@
+{
+  "$schema": "./node_modules/@emdash-cms/plugin-cli/schemas/emdash-plugin.schema.json",
+
+  "slug": "resend",
+  "publisher": "did:plc:ebt3jlwrhznbx4gpq4ahmq73", // vcode.sh
+
+  "license": "MIT",
+  "author": { "name": "Vibe Code", "url": "https://vcode.sh" },
+  "security": { "email": "hello@vcode.sh" },
+  "name": "Resend Email",
+  "description": "Send EmDash magic links, invites, recovery and plugin email through Resend.",
+  "keywords": ["email", "resend", "magic-link", "transactional"],
+
+  // Trust contract. Changing it requires a major version: installed sites
+  // consented to exactly this access.
+  "capabilities": ["hooks.email-transport:register", "network:request"],
+  "allowedHosts": ["api.resend.com"],
+  "storage": {},
+
+  // EmDash renders this form under Plugins → Resend Email → Settings and
+  // encrypts the secret field with EMDASH_ENCRYPTION_KEY.
+  "admin": {
+    "settingsSchema": {
+      "apiKey": {
+        "type": "secret",
+        "label": "API key",
+        "description": "A Resend API key with Sending access, from resend.com/api-keys."
+      },
+      "fromEmail": {
+        "type": "email",
+        "label": "Sender address",
+        "description": "An address on a domain verified in Resend, such as cms@example.com."
+      },
+      "fromName": {
+        "type": "string",
+        "label": "Sender name",
+        "description": "Optional display name, such as your site name."
+      }
+    }
+  },
+
+  "repo": "https://github.com/vcode-sh/emdash-resend-email",
+  "release": {
+    "requires": { "env:emdash": ">=1.2.0 <2.0.0" }
+  }
+}
